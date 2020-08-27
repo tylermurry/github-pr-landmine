@@ -1,5 +1,8 @@
 name: 'PR Landmine'
 description: 'A simple, language agnostic solution for creating manual mutation tests directly in-line with a Github pull request'
+branding:
+  color: white
+  icon: check
 inputs:
   token:
     description: 'The access token used to retrieve and update comments on the pull requests'
