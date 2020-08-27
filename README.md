@@ -26,7 +26,7 @@ Simply add the following action to your existing pull request workflow:
 
 ```yml
 - name: PR Landmine
-  uses: tylermurry/github-pr-landmine
+  uses: tylermurry/github-pr-landmine@v1
   with:
     token: ${{ github.token }}
     test-command: 'npm test' # <-- Use your test command here
@@ -41,13 +41,13 @@ Simply add the following action to your existing pull request workflow:
 **Note**: Multiple landmines can be added to a pull request. Each one will be executed in sequence and pass/fail individually. 
 
 # Task Options
-| Property               | Required | Default Value                       | Description                                                                                                                                                                                                   |
-| -----------------------|----------|-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| access-token           | Yes      |                                     | The access token used to retrieve and update comments on the pull requests. This will typically be your github token. If so, use `${{ github.token }}`                                                                                                                                    |
-| test-command           | Yes      |                                     | The command that is executed after each landmine is added. Ideally, this includes other static validation such as linting.                                                                                    |
-| test-command-directory | No       |                                     | The directory to apply the test command. Useful if your tests are orchestrated in a different directory than root.                                                                                            |
-| test-command-timeout   | No       | `60000`                             | The number of milliseconds to wait before bailing on the test command. Needs to be sufficiently high to run the test suite but low enough to catch infinite loops or runaway threads created by the mutation. |
-| auto-resolve           | No       | `true`                              | If the bomb is defused successfully, the original pull request comment will be auto-resolved.                                                                                                                 |
+| Property                 | Required | Default Value                       | Description                                                                                                                                                                                                   |
+| -------------------------|----------|-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `token`                  | Yes      |                                     | The access token used to retrieve and update comments on the pull requests. This will typically be your github token. If so, use `${{ github.token }}`                                                                                                                                    |
+| `test-command`           | Yes      |                                     | The command that is executed after each landmine is added. Ideally, this includes other static validation such as linting.                                                                                    |
+| `test-command-directory` | No       |                                     | The directory to apply the test command. Useful if your tests are orchestrated in a different directory than root.                                                                                            |
+| `test-command-timeout`   | No       | `60000`                             | The number of milliseconds to wait before bailing on the test command. Needs to be sufficiently high to run the test suite but low enough to catch infinite loops or runaway threads created by the mutation. |
+| `auto-resolve`           | No       | `true`                              | If the bomb is defused successfully, the original pull request comment will be auto-resolved.                                                                                                                 |
 
 # Contribution
 Found an issue or see something cool that's missing? Pull requests and issues are warmly accepted!
