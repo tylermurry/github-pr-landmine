@@ -1,4 +1,4 @@
-# 💣 PR Landmine for GitHub
+# 💣 PR Landmines for GitHub
 A simple, language agnostic solution for creating manual mutation tests directly in-line with a GitHub pull request
 
 # Overview
