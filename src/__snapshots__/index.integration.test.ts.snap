@@ -1,0 +1,287 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Integration Test should add a landmine but not catch it 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "body": "💥 Bomb not defused. Please adjust your test to catch the error",
+        "comment_id": "477484196",
+        "owner": "some-owner",
+        "pull_number": 123,
+        "repo": "some-repo-name",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Integration Test should add a landmine but not catch it 2`] = `
+Array [
+  Array [
+    "
+        {
+          repository(name: \\"some-repo-name\\", owner: \\"some-owner\\") {
+            pullRequest(number: 123) {
+              reviewThreads(last: 100) {
+                nodes {
+                  id
+                  isResolved
+                  line
+                  originalLine
+                  originalStartLine
+                  comments(last: 100) {
+                    nodes {
+                      id
+                      body
+                      path
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }",
+    Object {
+      "headers": Object {
+        "authorization": "token some-token",
+      },
+    },
+  ],
+]
+`;
+
+exports[`Integration Test should add a landmine but not catch it because the execution timed out 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "body": "💥 Bomb not defused. Please adjust your test to catch the error",
+        "comment_id": "477484196",
+        "owner": "some-owner",
+        "pull_number": 123,
+        "repo": "some-repo-name",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Integration Test should add a landmine but not catch it because the execution timed out 2`] = `
+Array [
+  Array [
+    "
+        {
+          repository(name: \\"some-repo-name\\", owner: \\"some-owner\\") {
+            pullRequest(number: 123) {
+              reviewThreads(last: 100) {
+                nodes {
+                  id
+                  isResolved
+                  line
+                  originalLine
+                  originalStartLine
+                  comments(last: 100) {
+                    nodes {
+                      id
+                      body
+                      path
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }",
+    Object {
+      "headers": Object {
+        "authorization": "token some-token",
+      },
+    },
+  ],
+]
+`;
+
+exports[`Integration Test should add two landmines and catch them all 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Object {
+        "body": "✅ Successfully defused bomb",
+        "comment_id": "477484196",
+        "owner": "some-owner",
+        "pull_number": 123,
+        "repo": "some-repo-name",
+      },
+    ],
+    Array [
+      Object {
+        "body": "✅ Successfully defused bomb",
+        "comment_id": "477484196",
+        "owner": "some-owner",
+        "pull_number": 123,
+        "repo": "some-repo-name",
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+    Object {
+      "type": "return",
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`Integration Test should add two landmines and catch them all 2`] = `
+Array [
+  Array [
+    "
+        {
+          repository(name: \\"some-repo-name\\", owner: \\"some-owner\\") {
+            pullRequest(number: 123) {
+              reviewThreads(last: 100) {
+                nodes {
+                  id
+                  isResolved
+                  line
+                  originalLine
+                  originalStartLine
+                  comments(last: 100) {
+                    nodes {
+                      id
+                      body
+                      path
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }",
+    Object {
+      "headers": Object {
+        "authorization": "token some-token",
+      },
+    },
+  ],
+  Array [
+    "
+              mutation {
+                  resolveReviewThread(input: {threadId: \\"MDIzOlB1bGxSZXF1ZXN0UmV2aWV3VGhyZWFkMjk4NTE0MDI4OnYy\\"}) {
+                    clientMutationId
+                  }
+              }
+            ",
+    Object {
+      "headers": Object {
+        "authorization": "token some-token",
+      },
+    },
+  ],
+  Array [
+    "
+              mutation {
+                  resolveReviewThread(input: {threadId: \\"MDIzOlB1bGxSZXF1ZXN0UmV2aWV3VGhyZWFkMjk4NTE0MDI4OnYy\\"}) {
+                    clientMutationId
+                  }
+              }
+            ",
+    Object {
+      "headers": Object {
+        "authorization": "token some-token",
+      },
+    },
+  ],
+]
+`;
+
+exports[`Integration Test should not find any landmines because there are no active threads 1`] = `[MockFunction]`;
+
+exports[`Integration Test should not find any landmines because there are no active threads 2`] = `
+Array [
+  Array [
+    "
+        {
+          repository(name: \\"some-repo-name\\", owner: \\"some-owner\\") {
+            pullRequest(number: 123) {
+              reviewThreads(last: 100) {
+                nodes {
+                  id
+                  isResolved
+                  line
+                  originalLine
+                  originalStartLine
+                  comments(last: 100) {
+                    nodes {
+                      id
+                      body
+                      path
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }",
+    Object {
+      "headers": Object {
+        "authorization": "token some-token",
+      },
+    },
+  ],
+]
+`;
+
+exports[`Integration Test should not find any landmines because there are no threads 1`] = `[MockFunction]`;
+
+exports[`Integration Test should not find any landmines because there are no threads 2`] = `
+Array [
+  Array [
+    "
+        {
+          repository(name: \\"some-repo-name\\", owner: \\"some-owner\\") {
+            pullRequest(number: 123) {
+              reviewThreads(last: 100) {
+                nodes {
+                  id
+                  isResolved
+                  line
+                  originalLine
+                  originalStartLine
+                  comments(last: 100) {
+                    nodes {
+                      id
+                      body
+                      path
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }",
+    Object {
+      "headers": Object {
+        "authorization": "token some-token",
+      },
+    },
+  ],
+]
+`;

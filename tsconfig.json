@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "rootDir": ".",
+    "outDir": "lib",
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "inlineSourceMap": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+
+    /* Additional Checks */
+    "noUnusedLocals": false /* Allow unused variables and let ESLint take over. */,
+    "noUnusedParameters": false /* Allow unused parameters and let ESLint take over. */,
+    "noImplicitReturns": true /* Report error when not all code paths in function return a value. */,
+    "noFallthroughCasesInSwitch": true /* Report errors for fallthrough cases in switch statement. */,
+
+    /* Debugging Options */
+    "traceResolution": false /* Report module resolution log messages. */,
+    "listEmittedFiles": false /* Print names of generated files part of the compilation. */,
+    "listFiles": false /* Print names of files part of the compilation. */,
+    "pretty": true /* Stylize errors and messages using color and context. */,
+
+    "lib": ["es2017", "dom"],
+    "types": ["node", "jest"],
+    "typeRoots": ["node_modules/@types", "src/types"]
+  },
+  "include": ["*.ts", "**/*.ts"],
+  "exclude": ["node_modules/**"],
+  "compileOnSave": true
+}

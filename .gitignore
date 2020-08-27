@@ -1,0 +1,5 @@
+package-lock.json
+lib
+demo-app/node_modules
+node_modules
+.idea

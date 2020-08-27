@@ -1,0 +1,35 @@
+{
+  "name": "github-pr-landmine",
+  "version": "1.0.0",
+  "description": "A simple, language agnostic solution for creating manual mutation tests directly in-line with a GitHub pull request",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "npm run build && jest",
+    "build": "tsc",
+    "package": "ncc build lib/index.js --source-map --minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tylermurry/github-pr-landmine.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tylermurry/github-pr-landmine/issues"
+  },
+  "homepage": "https://github.com/tylermurry/github-pr-landmine#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.4",
+    "@actions/github": "^4.0.0",
+    "@octokit/graphql": "^4.5.4",
+    "@octokit/rest": "^18.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^14.6.0",
+    "jest": "^26.4.2",
+    "jest-when": "^2.7.2",
+    "ts-jest": "^26.3.0",
+    "typescript": "^4.0.2",
+    "@vercel/ncc": "^0.24.0"
+  }
+}

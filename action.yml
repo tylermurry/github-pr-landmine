@@ -1,0 +1,24 @@
+name: 'PR Landmine'
+description: 'A simple, language agnostic solution for creating manual mutation tests directly in-line with a Github pull request'
+inputs:
+  token:
+    description: 'The access token used to retrieve and update comments on the pull requests'
+    required: true
+  test-command:
+    description: 'The command that is executed after each landmine is added. Ideally, this includes other static validation such as linting.'
+    required: true
+  test-command-directory:
+    description: 'The directory to apply the test command. Useful if your tests are orchestrated in a different directory than root.'
+    required: false
+    default: ''
+  test-command-timeout:
+    description: 'The number of milliseconds to wait before bailing on the test command. Needs to be sufficiently high to run the test suite but low enough to catch infinite loops or runaway threads created by the mutation.'
+    required: false
+    default: '60000'
+  auto-resolve:
+    description: 'If the bomb is defused successfully, the original pull request comment will be auto-resolved.'
+    required: false
+    default: 'true'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

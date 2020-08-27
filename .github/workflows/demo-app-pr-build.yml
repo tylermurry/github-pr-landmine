@@ -1,0 +1,32 @@
+on:
+  pull_request:
+    paths:
+      - 'demo-app/**'
+
+defaults:
+  run:
+    shell: bash
+    working-directory: demo-app
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: PR Build for demo-app
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      # Prepare and test the app just like a normal build
+      - name: npm Install
+        run: npm install
+      - name: npm Test
+        run: npm test
+
+      # Do landmine testing using action
+      - name: Sweeping for Landmines
+        uses: ./
+        with:
+          token: ${{ github.token }}
+          test-command: 'npm test'
+          test-command-directory: './demo-app'
+          test-command-timeout: '5000'
