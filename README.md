@@ -29,25 +29,25 @@ Simply add the following action to your existing pull request workflow:
   uses: tylermurry/github-pr-landmine
   with:
     token: ${{ github.token }}
-    test-command: 'npm test' # <-- Use your command here
+    test-command: 'npm test' # <-- Use your test command here
 ```  
 
-# Add a Landmine to a Pull Request
+# Add a landmine to a pull request
 1. In a pull request, choose a file and select a single line or range of lines where you would like to create a landmine.
 1. Start the comment with either the bomb emoji 💣 or `/bomb`. Either of these will signal to the task that the comment is a landmine.
 1. On the next line, use the [code suggestion syntax](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request#adding-line-comments-to-a-pull-request) to inject mutated code.
-1. Re-run the pull request job and the landmine thread should be annotated with the success or failure of the bomb defusal.
+1. Re-run the pull request workflow and the landmine thread should be annotated with the success or failure of the bomb defusal.
 
 **Note**: Multiple landmines can be added to a pull request. Each one will be executed in sequence and pass/fail individually. 
 
 # Task Options
-| Property                 | Required | Default Value                       | Description                                                                                                                                                                                                   |
-| -------------------------|----------|-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `access-token`           | Yes      |                                     | The access token used to retrieve and update comments on the pull requests. This will typically be your github token. If so, use `${{ github.token }}`                                                                                                                                    |
-| `test-command`           | Yes      |                                     | The command that is executed after each landmine is added. Ideally, this includes other static validation such as linting.                                                                                    |
-| `test-command-directory` | No       |                                     | The directory to apply the test command. Useful if your tests are orchestrated in a different directory than root.                                                                                            |
-| `test-command-timeout`   | No       | `60000`                             | The number of milliseconds to wait before bailing on the test command. Needs to be sufficiently high to run the test suite but low enough to catch infinite loops or runaway threads created by the mutation. |
-| `auto-resolve`           | No       | `true`                              | If the bomb is defused successfully, the original pull request comment will be auto-resolved.                                                                                                                 |
+| Property               | Required | Default Value                       | Description                                                                                                                                                                                                   |
+| -----------------------|----------|-------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| access-token           | Yes      |                                     | The access token used to retrieve and update comments on the pull requests. This will typically be your github token. If so, use `${{ github.token }}`                                                                                                                                    |
+| test-command           | Yes      |                                     | The command that is executed after each landmine is added. Ideally, this includes other static validation such as linting.                                                                                    |
+| test-command-directory | No       |                                     | The directory to apply the test command. Useful if your tests are orchestrated in a different directory than root.                                                                                            |
+| test-command-timeout   | No       | `60000`                             | The number of milliseconds to wait before bailing on the test command. Needs to be sufficiently high to run the test suite but low enough to catch infinite loops or runaway threads created by the mutation. |
+| auto-resolve           | No       | `true`                              | If the bomb is defused successfully, the original pull request comment will be auto-resolved.                                                                                                                 |
 
 # Contribution
 Found an issue or see something cool that's missing? Pull requests and issues are warmly accepted!
