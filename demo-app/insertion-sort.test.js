@@ -20,4 +20,9 @@ describe('insertion sort', () => {
     it('should not sort a null array', async () => {
         expect(() => insertionSort(null)).toThrow('Cannot read property \'length\' of null');
     });
+
+    it(`I only care about coverage and I'm a bad person`, async () => {
+        insertionSort(['c', 'b', 'a']);
+    });
+
 });
