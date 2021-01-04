@@ -1,4 +1,5 @@
 const { graphql } = require('@octokit/graphql');
+import { table } from 'table';
 import { executeTask } from './index';
 import { when } from 'jest-when';
 const core = require('@actions/core');
@@ -9,6 +10,7 @@ jest.mock('@actions/core');
 jest.mock('@actions/github');
 jest.mock('@octokit/graphql');
 jest.mock('@octokit/rest');
+jest.mock('table');
 
 const restMock = {
     pulls: {
@@ -86,6 +88,7 @@ describe('Integration Test', () => {
         expect(core.setFailed).not.toHaveBeenCalled();
         expect(restMock.pulls.createReplyForReviewComment).toMatchSnapshot();
         expect(graphql.mock.calls).toMatchSnapshot();
+        expect((table as any).mock.calls).toMatchSnapshot('bomb report');
     });
 
     it('should add a landmine but not catch it', async () => {
@@ -116,9 +119,10 @@ describe('Integration Test', () => {
 
         await executeTask();
 
-        expect(core.setFailed).toHaveBeenCalledWith('There was at least bomb that was not defused.');
+        expect(core.setFailed).toHaveBeenCalledWith('There was at least one bomb that was not defused.');
         expect(restMock.pulls.createReplyForReviewComment).toMatchSnapshot();
         expect(graphql.mock.calls).toMatchSnapshot();
+        expect((table as any).mock.calls).toMatchSnapshot('bomb report');
     });
 
     it('should add a landmine but not catch it because the execution timed out', async () => {
@@ -149,9 +153,10 @@ describe('Integration Test', () => {
 
         await executeTask();
 
-        expect(core.setFailed).toHaveBeenCalledWith('There was at least bomb that was not defused.');
+        expect(core.setFailed).toHaveBeenCalledWith('There was at least one bomb that was not defused.');
         expect(restMock.pulls.createReplyForReviewComment).toMatchSnapshot();
         expect(graphql.mock.calls).toMatchSnapshot();
+        expect((table as any).mock.calls).toMatchSnapshot('bomb report');
     });
 
     it('should not find any landmines because there are no threads', async () => {
@@ -170,6 +175,7 @@ describe('Integration Test', () => {
         expect(core.setFailed).not.toHaveBeenCalled();
         expect(restMock.pulls.createReplyForReviewComment).toMatchSnapshot();
         expect(graphql.mock.calls).toMatchSnapshot();
+        expect(table).not.toHaveBeenCalled();
     });
 
     it('should not find any landmines because there are no active threads', async () => {
@@ -218,5 +224,6 @@ describe('Integration Test', () => {
         expect(core.setFailed).not.toHaveBeenCalled();
         expect(restMock.pulls.createReplyForReviewComment).toMatchSnapshot();
         expect(graphql.mock.calls).toMatchSnapshot();
+        expect(table).not.toHaveBeenCalled();
     });
 });

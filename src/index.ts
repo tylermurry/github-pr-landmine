@@ -1,3 +1,5 @@
+import BombReport from "./bomb-report";
+
 const core = require('@actions/core');
 const github = require('@actions/github');
 import PullRequestService from './pull-request-service';
@@ -15,7 +17,7 @@ const outInvalidThreads = (thread): boolean => {
     if (thread.comments.nodes.find(comment => comment.body?.includes('✅'))) return false;
 
     return true;
-}
+};
 
 export const executeTask = async () => {
     try {
@@ -40,12 +42,14 @@ export const executeTask = async () => {
         const validThreads = threads.filter(outInvalidThreads);
         console.log(`Valid threads: ${JSON.stringify(validThreads, null, 2)}`);
 
+        const bombReport = new BombReport();
         let atLeastOneFailure = false;
 
         for (const thread of validThreads) {
             console.log(JSON.stringify(thread, null, 2));
 
             const bombDefused = await runMinesweeper(testCommand, testCommandDirectory, testCommandTimeout, thread);
+            bombReport.pushBombOutcome(thread, bombDefused);
 
             if (bombDefused) {
                 await pullRequestService.replyToCommentToThread(pullRequestNumber, thread.id, thread.comments.nodes[0].id, '✅ Successfully defused bomb', autoResolve);
@@ -55,8 +59,10 @@ export const executeTask = async () => {
             }
         }
 
+        console.log(bombReport.generateReport());
+
         if (atLeastOneFailure) {
-            throw Error('There was at least bomb that was not defused.')
+            throw Error('There was at least one bomb that was not defused.')
         }
     }
     catch (err) {

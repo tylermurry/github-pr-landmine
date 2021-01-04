@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Bomb Report should prepare document correctly 1`] = `
+Array [
+  Array [
+    Array [
+      Array [
+        "File Name",
+        "Line Numbers",
+        "Bomb Defused",
+      ],
+      Array [
+        "source-file.js",
+        "1-2",
+        "no",
+      ],
+      Array [
+        "another-source-file.js",
+        3,
+        "yes",
+      ],
+    ],
+  ],
+]
+`;

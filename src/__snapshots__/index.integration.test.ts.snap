@@ -114,6 +114,44 @@ Array [
 ]
 `;
 
+exports[`Integration Test should add a landmine but not catch it because the execution timed out: bomb report 1`] = `
+Array [
+  Array [
+    Array [
+      Array [
+        "File Name",
+        "Line Numbers",
+        "Bomb Defused",
+      ],
+      Array [
+        "insertion-sort.js",
+        "7-8",
+        "no",
+      ],
+    ],
+  ],
+]
+`;
+
+exports[`Integration Test should add a landmine but not catch it: bomb report 1`] = `
+Array [
+  Array [
+    Array [
+      Array [
+        "File Name",
+        "Line Numbers",
+        "Bomb Defused",
+      ],
+      Array [
+        "insertion-sort.js",
+        "2-3",
+        "no",
+      ],
+    ],
+  ],
+]
+`;
+
 exports[`Integration Test should add two landmines and catch them all 1`] = `
 [MockFunction] {
   "calls": Array [
@@ -208,6 +246,30 @@ Array [
         "authorization": "token some-token",
       },
     },
+  ],
+]
+`;
+
+exports[`Integration Test should add two landmines and catch them all: bomb report 1`] = `
+Array [
+  Array [
+    Array [
+      Array [
+        "File Name",
+        "Line Numbers",
+        "Bomb Defused",
+      ],
+      Array [
+        "insertion-sort.js",
+        12,
+        "yes",
+      ],
+      Array [
+        "insertion-sort.js",
+        12,
+        "yes",
+      ],
+    ],
   ],
 ]
 `;
